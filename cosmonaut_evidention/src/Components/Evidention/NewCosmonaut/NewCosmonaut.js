@@ -1,25 +1,23 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { useFormik } from 'formik';
 import axios from 'axios';
-import ModalForm from '../../../Containers/Modal/modalForm'
+import ModalFormAdd from '../../../Containers/ModalFormAdd/ModalFormAdd'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Cosmonauts from "../cosmonauts/cosmonauts";
 
 const API_URL = 'https://evidence-of-cosmonauts.firebaseio.com/evidence-of-cosmonauts.json';
-function AddCosmonaut() {
-    const [data, setData] = useState({});
+function NewCosmonaut(props) {
 
     const validate = values => {
         const errors = {};
         if (!values.firstName) {
             errors.firstName = 'Required';
-        } else if (!/^[a-zA-Z]*$/.test(values.firstName)) {
+        } else if (!/^[a-zA-Z ]+(.+)*$/.test(values.firstName)) {
             errors.firstName = 'First Name must contain only text';
         }
 
         if (!values.lastName) {
             errors.lastName = 'Required';
-        } else if (!/^[a-zA-Z]*$/.test(values.lastName)) {
+        } else if (!/^[a-zA-Z ]*$/.test(values.lastName)) {
             errors.lastName = 'Last Name must contain only text';
         }
 
@@ -31,8 +29,8 @@ function AddCosmonaut() {
 
         if (!values.superPower) {
             errors.superPower = 'Required';
-        } else if (!/^[a-zA-Z]*$/.test(values.superPower)) {
-            errors.superPower = 'First Name must contain only text';
+        } else if (!/^([a-zA-Z]+(, [a-zA-Z ]+)|[a-zA-Z ])*$/.test(values.superPower)) {
+            errors.superPower = 'Superpower Name must contain only text';
         }
 
         return errors;
@@ -56,7 +54,7 @@ function AddCosmonaut() {
                 };
                 axios.post(API_URL, data)
                     .then(res => {
-                        setData(res.data);
+                        props.loadData();
                     }).catch(err => {
                         console.log(err)
                 });
@@ -65,7 +63,7 @@ function AddCosmonaut() {
 
     return (
         <div>
-           <ModalForm
+           <ModalFormAdd
                 send={formik.handleSubmit}
                 changed={formik.handleChange}
                 onBlur={formik.handleBlur}
@@ -78,11 +76,8 @@ function AddCosmonaut() {
                 dateOfBirthError={formik.errors.dateOfBirth}
                 superPowerError={formik.errors.superPower}
            />
-           <Cosmonauts
-               lastId={data.name}
-           />
         </div>
     );
 }
 
-export default AddCosmonaut;
+export default NewCosmonaut;

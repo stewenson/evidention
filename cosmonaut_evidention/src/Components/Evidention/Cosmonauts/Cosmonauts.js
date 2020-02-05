@@ -1,30 +1,33 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './cosmonauts.scss';
-import Cosmonaut from "./cosmonaut/cosmonaut";
+import './Cosmonauts.scss';
+import Cosmonaut from "./Cosmonaut/Cosmonaut";
 import {Table} from "react-bootstrap";
+import NewCosmonaut from "../NewCosmonaut/NewCosmonaut";
 
 const API_URL = 'https://evidence-of-cosmonauts.firebaseio.com/evidence-of-cosmonauts';
+
 function Cosmonauts(props) {
     const [data, setData] = useState();
-    const [isDelete, setIsDelete] = useState('');
 
-    console.log(props.lastDeletedId);
-    useEffect(() => {
+    const loadData = () => {
         axios.get(API_URL + '.json')
             .then(res => {
-                console.log(res.data);
                 setData(res.data);
             }).catch(err => {
-                console.log(err)
+            console.log(err)
         })
-    },[props.lastId, isDelete]);
+    };
+
+    useEffect(() => {
+        loadData();
+    },[]);
 
     const deleteHandler = (key) => {
         axios.delete(API_URL + '/' + key + '.json')
             .then(res => {
-                setIsDelete(key);
+                loadData();
             }).catch(err => {
             console.log(err)
         });
@@ -42,9 +45,11 @@ function Cosmonauts(props) {
                     superPower={data.superPower}
                     keyToDelete={key}
                     deleted={() => deleteHandler(key)}
+                    keyForEdit={key}
+                    loadData={loadData}
                 />
             </tr>
-        ))
+    ))
     } else {
         notdata = (
             <h2>Nothing to show</h2>
@@ -53,6 +58,11 @@ function Cosmonauts(props) {
 
     return (
         <div>
+            <div>
+                <NewCosmonaut
+                    loadData={loadData}
+                />
+            </div>
             <Table striped bordered hover>
                 <thead>
                     <tr>

@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
 import { Button, Modal, Form } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './modalForm.scss';
+import './ModalFormAdd.scss';
 
-function ModalForm(props) {
+function ModalFormAdd(props) {
     const [show, setShow] = useState(false);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -108,4 +107,4 @@ function ModalForm(props) {
     );
 }
 
-export default ModalForm;
+export default ModalFormAdd;

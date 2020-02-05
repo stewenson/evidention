@@ -1,11 +1,11 @@
 import React from 'react';
-import AddCosmonaut from "./Components/Evidention/addCosmonaut/addCosmonaut";
+import Cosmonauts from "./Components/Evidention/Cosmonauts/Cosmonauts";
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-        <AddCosmonaut />
+        <Cosmonauts />
     </div>
   );
 }
