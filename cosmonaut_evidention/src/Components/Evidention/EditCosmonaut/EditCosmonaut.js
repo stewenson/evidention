@@ -11,13 +11,13 @@ function EditCosmonaut(props) {
         const errors = {};
         if (!values.firstName) {
             errors.firstName = 'Required';
-        } else if (!/^[a-zA-Z ]*$/.test(values.firstName)) {
+        } else if (!/^[a-žA-Ž ]+(.+)*$/.test(values.firstName)) {
             errors.firstName = 'First Name must contain only text';
         }
 
         if (!values.lastName) {
             errors.lastName = 'Required';
-        } else if (!/^[a-zA-Z]*$/.test(values.lastName)) {
+        } else if (!/^[a-žA-Ž ]*$/.test(values.lastName)) {
             errors.lastName = 'Last Name must contain only text';
         }
 
@@ -29,7 +29,7 @@ function EditCosmonaut(props) {
 
         if (!values.superPower) {
             errors.superPower = 'Required';
-        } else if (!/^[a-zA-Z]+(, [a-zA-Z ]+)*$/.test(values.superPower)) {
+        } else if (!/^([a-zA-Z]+(, [a-zA-Z ]+)|[a-zA-Z ])*$/.test(values.superPower)) {
             errors.superPower = 'Superpower Name must contain only text';
         }
 

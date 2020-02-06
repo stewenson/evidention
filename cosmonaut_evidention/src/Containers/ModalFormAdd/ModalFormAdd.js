@@ -9,14 +9,12 @@ function ModalFormAdd(props) {
     const handleShow = () => setShow(true);
 
     return (
-        <div className="modalform">
+        <div className="modalForm">
             <Button
-                className="button"
                 variant="primary"
                 onClick={handleShow}>
                 Add cosmonaut
             </Button>
-
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Add Cosmonaut</Modal.Title>
@@ -94,7 +92,7 @@ function ModalFormAdd(props) {
                         </Form.Group>
 
                         <Button
-                            variant="primary"
+                            variant="success"
                             type="submit"
                             onClick={handleClose}
                         >

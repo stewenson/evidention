@@ -8,16 +8,17 @@ const API_URL = 'https://evidence-of-cosmonauts.firebaseio.com/evidence-of-cosmo
 function NewCosmonaut(props) {
 
     const validate = values => {
+
         const errors = {};
         if (!values.firstName) {
             errors.firstName = 'Required';
-        } else if (!/^[a-zA-Z ]+(.+)*$/.test(values.firstName)) {
+        } else if (!/^[a-žA-Ž ]+(.+)*$/.test(values.firstName)) {
             errors.firstName = 'First Name must contain only text';
         }
 
         if (!values.lastName) {
             errors.lastName = 'Required';
-        } else if (!/^[a-zA-Z ]*$/.test(values.lastName)) {
+        } else if (!/^[a-žA-Ž ]*$/.test(values.lastName)) {
             errors.lastName = 'Last Name must contain only text';
         }
 

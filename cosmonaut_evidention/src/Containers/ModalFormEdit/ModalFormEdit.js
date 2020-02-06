@@ -5,19 +5,17 @@ import './ModalFormEdit.scss';
 
 function ModalFormEdit(props) {
     const [show, setShow] = useState(false);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     return (
-        <div className="modalformedit">
+        <div className="modalFormEdit">
             <Button
                 className="button"
                 variant="warning"
                 onClick={handleShow}>
                 Edit
             </Button>
-
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Edit Cosmonaut</Modal.Title>
