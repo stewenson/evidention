@@ -8,7 +8,7 @@ function Task() {
             <p>
                 Prosím o vytvoření jednoduché stránky, na které bude možné evidovat kosmonauty a spravovat  jejich seznam.
                 Určitě by bylo vhodné, aby stránka umožňovala vložit do evidence nového kosmonauta,
-                editovat jea vidět již evidované kosmonauty.
+                editovat je a vidět již evidované kosmonauty.
             </p>
             <br />
             <h5>Ke každému kosmonautovi potřebujeme evidovat:</h5>

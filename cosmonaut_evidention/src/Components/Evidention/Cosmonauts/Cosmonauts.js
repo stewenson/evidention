@@ -10,8 +10,8 @@ import Pagination from "../../Pagination/Pagination";
 const API_URL = 'https://evidence-of-cosmonauts.firebaseio.com/evidence-of-cosmonauts';
 function Cosmonauts() {
     const [data, setData] = useState();
-    const [editedCosmonaut, setEditedCosmonaut] = useState('');
-    const [allCosmonauts, setAllCosmonauts] = useState('');
+    const [editedCosmonaut, setEditedCosmonaut] = useState(false);
+    const [allCosmonauts, setAllCosmonauts] = useState(true);
     // pagination
     const [currentPage, setCurrentPage] = useState(1);
     const [cosmonautPerPage] = useState(5);
@@ -88,12 +88,13 @@ function Cosmonauts() {
                 </tr>
             ))
     } else {
-        notData = (
-            <h2>Nothing to show</h2>
-        )
+       notData = (
+           <h2>Nothing to show</h2>
+       );
     }
-
+    
     return (
+        <React.Fragment>
         <div className="cosmonauts">
             <div>
                 <NewCosmonaut
@@ -133,9 +134,10 @@ function Cosmonauts() {
                     totalCosmonaut={totalData}
                     paginate={paginate}
                 />
-                {notData}
             </div>
+            {notData}
         </div>
+        </React.Fragment>
     );
 }
 

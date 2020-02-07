@@ -1,7 +1,7 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import axios from 'axios';
-import ModalFormEdit from "../../../Containers/ModalFormEdit/ModalFormEdit";
+import ModalForm from '../../../Containers/ModalForm/ModalForm';
 
 const API_URL = "https://evidence-of-cosmonauts.firebaseio.com/evidence-of-cosmonauts";
 function EditCosmonaut(props) {
@@ -66,7 +66,10 @@ function EditCosmonaut(props) {
 
     return (
         <div>
-            <ModalFormEdit
+            <ModalForm
+                action={'Edit'}
+                variant={'warning'}
+                text={'Edit Cosmonaut'}
                 send={formik.handleSubmit}
                 changed={formik.handleChange}
                 onBlur={formik.handleBlur}

@@ -1,26 +1,26 @@
 import React, {useState} from 'react';
 import { Button, Modal, Form } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './ModalFormEdit.scss';
+import './ModalForm.scss';
 
-function ModalFormEdit(props) {
+function ModalForm(props) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     return (
-        <div className="modalFormEdit">
+        <div className="modalForm">
             <Button
-                className="button"
-                variant="warning"
+                variant={props.variant}
                 onClick={handleShow}>
-                Edit
+                {props.action}
             </Button>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Edit Cosmonaut</Modal.Title>
+                    <Modal.Title>{props.text}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+
                     <Form onSubmit={props.send}>
                         <Form.Group>
                             <Form.Label>First Name</Form.Label>
@@ -92,7 +92,7 @@ function ModalFormEdit(props) {
                         </Form.Group>
 
                         <Button
-                            variant="primary"
+                            variant="success"
                             type="submit"
                             onClick={handleClose}
                         >
@@ -105,4 +105,4 @@ function ModalFormEdit(props) {
     );
 }
 
-export default ModalFormEdit;
+export default ModalForm;

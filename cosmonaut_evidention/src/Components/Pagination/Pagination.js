@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 
 const Pagination = ({ cosmonautPerPage, totalCosmonaut, paginate}) => {
     const pageNumber = [];
@@ -8,19 +9,17 @@ const Pagination = ({ cosmonautPerPage, totalCosmonaut, paginate}) => {
     }
 
     return (
-        <nav>
-            <ul className="pagination">
-                {pageNumber.map(number => (
-                    <li key={number} className="page-item">
-                        <a onClick={() => paginate(number)}
-                            href="!#"
-                           className="page-link">
-                            {number}
-                        </a>
-                    </li>
-                ))}
-            </ul>
-        </nav>
+        <ul className="pagination">
+            {pageNumber.map(number => (
+                <li key={number} className="page-item">
+                    <Button onClick={() => paginate(number)}
+                        className="page-link"
+                    >
+                        {number}
+                    </Button>
+                </li>
+            ))}
+        </ul>
     )
 };
 

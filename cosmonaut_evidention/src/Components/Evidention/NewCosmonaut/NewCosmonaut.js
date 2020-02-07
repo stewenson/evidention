@@ -1,7 +1,7 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import axios from 'axios';
-import ModalFormAdd from '../../../Containers/ModalFormAdd/ModalFormAdd'
+import ModalForm from '../../../Containers/ModalForm/ModalForm';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const API_URL = 'https://evidence-of-cosmonauts.firebaseio.com/evidence-of-cosmonauts.json';
@@ -64,7 +64,10 @@ function NewCosmonaut(props) {
 
     return (
         <div>
-           <ModalFormAdd
+           <ModalForm
+                action={'Add Cosmonaut'}
+                variant={'primary'}
+                text={'Add Cosmonaut'}
                 send={formik.handleSubmit}
                 changed={formik.handleChange}
                 onBlur={formik.handleBlur}
