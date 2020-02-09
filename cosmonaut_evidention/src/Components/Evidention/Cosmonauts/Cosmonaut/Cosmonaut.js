@@ -1,6 +1,6 @@
 import React from 'react';
-import {Button} from "react-bootstrap";
 import EditCosmonaut from "../../EditCosmonaut/EditCosmonaut";
+import ButtonComponent from "../../../../Containers/ButtonComponent/ButtonComponent";
 
 function Cosmonaut(props) {
 
@@ -21,13 +21,12 @@ function Cosmonaut(props) {
                 />
             </td>
             <td>
-                <Button
-                    variant="danger"
-                    type="submit"
-                    onClick={props.deleted}
-                >
-                    Delete
-                </Button>
+                <ButtonComponent
+                    variant={'danger'}
+                    type={'submit'}
+                    clicked={props.deleted}
+                    text={'Delete'}
+                />
             </td>
         </React.Fragment>
     );

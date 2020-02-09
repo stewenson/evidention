@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
-import { Button, Modal, Form } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './ModalForm.scss';
+import ButtonComponent from "../ButtonComponent/ButtonComponent";
+import FormComponent from "../Form/FormComponent/FormComponent";
 
 function ModalForm(props) {
     const [show, setShow] = useState(false);
@@ -10,95 +12,33 @@ function ModalForm(props) {
 
     return (
         <div className="modalForm">
-            <Button
+            <ButtonComponent
                 variant={props.variant}
-                onClick={handleShow}>
-                {props.action}
-            </Button>
+                text={props.text}
+                clicked={handleShow}
+            />
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>{props.text}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-
-                    <Form onSubmit={props.send}>
-                        <Form.Group>
-                            <Form.Label>First Name</Form.Label>
-                            <Form.Control
-                                htmlFor="firstName"
-                                id="firstName"
-                                type="text"
-                                onChange={props.changed}
-                                onBlur={props.onBlur}
-                                value={props.firstName}
-                            />
-                            <Form.Text className="text-muted">
-                                {props.firstNameError ?
-                                    <div>
-                                        <h5>{props.firstNameError}</h5>
-                                    </div>: null}
-                            </Form.Text>
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Last Name</Form.Label>
-                            <Form.Control
-                                htmlFor="lastName"
-                                id="lastName"
-                                type="text"
-                                onChange={props.changed}
-                                onBlur={props.onBlur}
-                                value={props.lastName}
-                            />
-                            <Form.Text className="text-muted">
-                                {props.lastNameError ?
-                                    <div>
-                                        <h5>{props.lastNameError}</h5>
-                                    </div>: null}
-                            </Form.Text>
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Date of Birth</Form.Label>
-                            <Form.Control
-                                htmlFor="dateOfBirth"
-                                id="dateOfBirth"
-                                type="date"
-                                onChange={props.changed}
-                                onBlur={props.onBlur}
-                                value={props.dateOfBirth}
-                            />
-                            <Form.Text className="text-muted">
-                                {props.dateOfBirthError ?
-                                    <div>
-                                        <h5>{props.dateOfBirthError}</h5>
-                                    </div>: null}
-                            </Form.Text>
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Superpower</Form.Label>
-                            <Form.Control
-                                htmlFor="superPower"
-                                id="superPower"
-                                type="text"
-                                onChange={props.changed}
-                                onBlur={props.onBlur}
-                                value={props.superPower}
-                            />
-                            <Form.Text className="text-muted">
-                                {props.superPowerError ?
-                                    <div>
-                                        <h5>{props.superPowerError}</h5>
-                                    </div>: null}
-                            </Form.Text>
-                        </Form.Group>
-
-                        <Button
-                            variant="success"
-                            type="submit"
-                            onClick={handleClose}
-                        >
-                            Submit
-                        </Button>
-                    </Form>
+                    <FormComponent
+                        //actions
+                        send={props.send}
+                        changed={props.changed}
+                        onBlur={props.onBlur}
+                        clicked={handleClose}
+                        //names
+                        firstName={props.firstName}
+                        lastName={props.lastName}
+                        dateOfBirth={props.dateOfBirth}
+                        superPower={props.superPower}
+                        // errors
+                        firstNameError={props.firstNameError}
+                        lastNameError={props.lastNameError}
+                        dateOfBirthError={props.dateOfBirthError}
+                        superPowerError={props.superPowerError}
+                    />
                 </Modal.Body>
             </Modal>
         </div>

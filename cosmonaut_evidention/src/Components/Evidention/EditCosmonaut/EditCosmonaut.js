@@ -24,7 +24,7 @@ function EditCosmonaut(props) {
         if (!values.dateOfBirth) {
             errors.dateOfBirth = 'Required';
         } else if (!/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/.test(values.dateOfBirth)) {
-            errors.dateOfBirth = 'First Name must contain only text';
+            errors.dateOfBirth = 'Invalid date';
         }
 
         if (!values.superPower) {
@@ -67,9 +67,8 @@ function EditCosmonaut(props) {
     return (
         <div>
             <ModalForm
-                action={'Edit'}
                 variant={'warning'}
-                text={'Edit Cosmonaut'}
+                text={'Edit'}
                 send={formik.handleSubmit}
                 changed={formik.handleChange}
                 onBlur={formik.handleBlur}

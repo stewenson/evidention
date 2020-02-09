@@ -20,7 +20,7 @@ const Pagination = ({ cosmonautPerPage, totalCosmonaut, paginate}) => {
                 </li>
             ))}
         </ul>
-    )
+    );
 };
 
 export default Pagination;

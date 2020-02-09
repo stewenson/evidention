@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Table, Button} from "react-bootstrap";
+import {Table} from "react-bootstrap";
 import './Cosmonauts.scss';
 import Cosmonaut from "./Cosmonaut/Cosmonaut";
 import NewCosmonaut from "../NewCosmonaut/NewCosmonaut";
 import Pagination from "../../Pagination/Pagination";
+import ButtonComponent from "../../../Containers/ButtonComponent/ButtonComponent";
 
 const API_URL = 'https://evidence-of-cosmonauts.firebaseio.com/evidence-of-cosmonauts';
 function Cosmonauts() {
@@ -92,7 +93,6 @@ function Cosmonauts() {
            <h2>Nothing to show</h2>
        );
     }
-    
     return (
         <React.Fragment>
         <div className="cosmonauts">
@@ -101,21 +101,18 @@ function Cosmonauts() {
                     loadData={loadData}
                 />
             </div>
-            <div>
-                <Button
-                    onClick={() => [setEditedCosmonaut(false), setAllCosmonauts(true)]}
-                    className="all"
-                    variant="link"
-                >
-                    All cosmonauts
-                </Button>
-                <Button
-                    onClick={() => [setEditedCosmonaut(true), setAllCosmonauts(false)]}
-                    className="edited"
-                    variant="link"
-                >
-                    Edited cosmonauts
-                </Button>
+                <ButtonComponent
+                    clicked={() => [setEditedCosmonaut(false), setAllCosmonauts(true)]}
+                    cName={'all'}
+                    variant={'link'}
+                    text={'All cosmonauts'}
+                />
+                <ButtonComponent
+                    clicked={() => [setEditedCosmonaut(true), setAllCosmonauts(false)]}
+                    cName={'edited'}
+                    variant={'link'}
+                    text={'Edited cosmonauts'}
+                />
                 <Table striped bordered hover>
                     <thead>
                     <tr>
@@ -136,7 +133,6 @@ function Cosmonauts() {
                 />
             </div>
             {notData}
-        </div>
         </React.Fragment>
     );
 }

@@ -25,7 +25,7 @@ function NewCosmonaut(props) {
         if (!values.dateOfBirth) {
             errors.dateOfBirth = 'Required';
         } else if (!/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/.test(values.dateOfBirth)) {
-            errors.dateOfBirth = 'First Name must contain only text';
+            errors.dateOfBirth = 'Invalid Date';
         }
 
         if (!values.superPower) {
@@ -65,20 +65,19 @@ function NewCosmonaut(props) {
     return (
         <div>
            <ModalForm
-                action={'Add Cosmonaut'}
-                variant={'primary'}
-                text={'Add Cosmonaut'}
-                send={formik.handleSubmit}
-                changed={formik.handleChange}
-                onBlur={formik.handleBlur}
-                firstName={formik.values.firstName}
-                lastName={formik.values.lastName}
-                dateOfBirth={formik.values.dateOfBirth}
-                superPower={formik.values.superPower}
-                firstNameError={formik.errors.firstName}
-                lastNameError={formik.errors.lastName}
-                dateOfBirthError={formik.errors.dateOfBirth}
-                superPowerError={formik.errors.superPower}
+               text={'Add cosmonaut'}
+               variant={'primary'}
+               send={formik.handleSubmit}
+               changed={formik.handleChange}
+               onBlur={formik.handleBlur}
+               firstName={formik.values.firstName}
+               lastName={formik.values.lastName}
+               dateOfBirth={formik.values.dateOfBirth}
+               superPower={formik.values.superPower}
+               firstNameError={formik.errors.firstName}
+               lastNameError={formik.errors.lastName}
+               dateOfBirthError={formik.errors.dateOfBirth}
+               superPowerError={formik.errors.superPower}
            />
         </div>
     );
